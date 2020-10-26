@@ -1,4 +1,4 @@
-# Varbase Media
+# Paraseed Media
 ---
 
 CONTENTS OF THIS FILE
@@ -15,7 +15,7 @@ CONTENTS OF THIS FILE
 INTRODUCTION
 ------------
 
-This is a Varbase Feature. Manages type of media contents and entity browsers
+This is a Paraseed Feature. Manages type of media contents and entity browsers
 in the site.
 
 Manages type of media contents and entity browsers in the site.
@@ -45,20 +45,11 @@ This module requires following modules outside of Drupal core:
  * Slick Carousel - https://www.drupal.org/project/slick
 
 
-RECOMMENDED
------------
-
-Use With Varbase Distribution:
-This module is best used with Varbase distribution.
-
- * Varbase - https://www.drupal.org/project/varbase
-
-
 INSTALLATION
 ------------
 
- * Install the Varbase Media module as you would normally install a contributed
-   Drupal module. Visit 
+ * Install the Paraseed Media module as you would normally install a contributed
+   Drupal module. Visit
    https://www.drupal.org/node/1897420 for further information.
 
 
@@ -67,7 +58,6 @@ FEATURES
  * Media Library Browser
  * Library of Responsive Image Styles
  * Library of Media sizes
- * Varbase Auto Fill Media data Behaviors
  * Embed an Image media type with a link
  * Embed a video media type
 
@@ -75,5 +65,4 @@ FEATURES
 MAINTAINERS
 -----------
 
- * Mohammed Razem - https://www.drupal.org/u/mohammed-j-razem
- * Rajab Natshah  - https://www.drupal.org/u/rajabnatshah
+ * Pranav Aeer - https://www.drupal.org/u/pranav73
