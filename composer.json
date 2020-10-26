@@ -59,6 +59,6 @@
       "libraries/{$name}": [
         "type:drupal-library"
       ]
-    },
+    }
   }
 }
