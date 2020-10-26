@@ -1,0 +1,32 @@
+name: 'Paraseed Media'
+description: 'Manages type of media contents in the site.'
+type: module
+core: 8.x
+dependencies:
+  - ace_editor
+  - better_exposed_filters
+  - blazy
+  - ckeditor_media_embed
+  - ds
+  - ds_extras
+  - entity_embed
+  - filter
+  - focal_point
+  - image
+  - layout_builder
+  - media
+  - media_library
+  - pathologic
+  - responsive_image
+  - slick
+  - user
+  - views
+  - views_bulk_operations
+  - entity_browser_generic_embed
+  - dropzonejs_eb_widget
+  - entity_browser
+  - entity_browser_generic_embed
+  - views_infinite_scroll
+  - token_filter
+  - image_resize_filter
+version: 8.x-1.0
