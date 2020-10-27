@@ -1,0 +1,7 @@
+paraseed_media.settings:
+  path: '/admin/config/paraseed/paraseed-media'
+  defaults:
+    _form: '\Drupal\paraseed_media\Form\ParaseedMediaSettingsForm'
+    _title: 'Paraseed Media settings'
+  requirements:
+    _permission: 'administer paraseed media settings'

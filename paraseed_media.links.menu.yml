@@ -1,0 +1,5 @@
+paraseed_media.settings:
+  title: 'Paraseed Media settings'
+  description: 'Configuring Varbase Media.'
+  parent: paraseed_core.settings_index
+  route_name: paraseed_media.settings
