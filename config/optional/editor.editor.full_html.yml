@@ -25,7 +25,6 @@ settings:
           name: Media
           items:
             - DrupalMediaLibrary
-            - gallery
             - Embed
             - '-'
             - Blockquote

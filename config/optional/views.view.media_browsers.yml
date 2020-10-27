@@ -352,7 +352,6 @@ display:
             all: all
             audio: audio
             file: file
-            gallery: gallery
             image: image
             instagram: instagram
             remote_video: remote_video
