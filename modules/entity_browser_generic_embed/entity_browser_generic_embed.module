@@ -171,55 +171,55 @@ function entity_browser_generic_embed_inject_entity_browser_count(array $element
  * @param array $variables
  *   Template variables.
  */
-function entity_browser_generic_embed_preprocess_image_style(array &$variables) {
-  $extension = pathinfo($variables['uri'], PATHINFO_EXTENSION);
-  $extension = mb_strtolower($extension);
-
-  // If this is an SVG and we don't know its dimensions, try to calculate them
-  // through the image style's effect chain.
-  if ($extension == 'svg' && (empty($variables['image']['#width']) || empty($variables['image']['#height']))) {
-    $image_style = ImageStyle::load($variables['style_name']);
-
-    // Loop through the effect chain, collecting configured dimensions for all
-    // resizing effects.
-    $dimensions = [];
-    foreach ($image_style->getEffects() as $effect) {
-      if ($effect instanceof ResizeImageEffect) {
-        $configuration = $effect->getConfiguration();
-
-        array_push($dimensions, [
-          'width' => $configuration['data']['width'],
-          'height' => $configuration['data']['height'],
-        ]);
-      }
-    }
-    // If we didn't collect any dimensions, there's nothing else to be done.
-    if (empty($dimensions)) {
-      return;
-    }
-
-    // Sort the configured dimensions in ascending order by an arbitrary axis,
-    // which can be 'width' or 'height'.
-    $axis = @$variables['sort_axis'] ?: 'width';
-    usort($dimensions, function (array $a, array $b) use ($axis) {
-      return $b[$axis] - $a[$axis];
-    });
-
-    // Start with the widest set of configured dimensions.
-    $dimensions = end($dimensions);
-    // Allow the image style to transform the dimensions as needed.
-    $image_style->transformDimensions($dimensions, $variables['uri']);
-
-    if ($dimensions['width']) {
-      $variables['image']['#width'] = $dimensions['width'];
-    }
-    if ($dimensions['height']) {
-      $variables['image']['#height'] = $dimensions['height'];
-    }
-    // If at least one dimension is known, display the image.
-    $variables['image']['#access'] = $dimensions['width'] || $dimensions['height'];
-  }
-}
+// function entity_browser_generic_embed_preprocess_image_style(array &$variables) {
+//   $extension = pathinfo($variables['uri'], PATHINFO_EXTENSION);
+//   $extension = mb_strtolower($extension);
+//
+//   // If this is an SVG and we don't know its dimensions, try to calculate them
+//   // through the image style's effect chain.
+//   if ($extension == 'svg' && (empty($variables['image']['#width']) || empty($variables['image']['#height']))) {
+//     $image_style = ImageStyle::load($variables['style_name']);
+//
+//     // Loop through the effect chain, collecting configured dimensions for all
+//     // resizing effects.
+//     $dimensions = [];
+//     foreach ($image_style->getEffects() as $effect) {
+//       if ($effect instanceof ResizeImageEffect) {
+//         $configuration = $effect->getConfiguration();
+//
+//         array_push($dimensions, [
+//           'width' => $configuration['data']['width'],
+//           'height' => $configuration['data']['height'],
+//         ]);
+//       }
+//     }
+//     // If we didn't collect any dimensions, there's nothing else to be done.
+//     if (empty($dimensions)) {
+//       return;
+//     }
+//
+//     // Sort the configured dimensions in ascending order by an arbitrary axis,
+//     // which can be 'width' or 'height'.
+//     $axis = @$variables['sort_axis'] ?: 'width';
+//     usort($dimensions, function (array $a, array $b) use ($axis) {
+//       return $b[$axis] - $a[$axis];
+//     });
+//
+//     // Start with the widest set of configured dimensions.
+//     $dimensions = end($dimensions);
+//     // Allow the image style to transform the dimensions as needed.
+//     // $image_style->transformDimensions($dimensions, $variables['uri']);
+//
+//     if ($dimensions['width']) {
+//       $variables['image']['#width'] = $dimensions['width'];
+//     }
+//     if ($dimensions['height']) {
+//       $variables['image']['#height'] = $dimensions['height'];
+//     }
+//     // If at least one dimension is known, display the image.
+//     $variables['image']['#access'] = $dimensions['width'] || $dimensions['height'];
+//   }
+// }
 
 /**
  * Implements hook_form_FORM_ID_alter().

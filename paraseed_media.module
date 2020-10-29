@@ -732,54 +732,55 @@ function paraseed_media_preprocess_media_oembed_iframe__remote_video(&$variables
 /**
  * Implements hook_preprocess_image().
  */
-function paraseed_media_preprocess_image(&$variables) {
-
-  // Add the Paraseed Media Blazy Blurry behaviour.
-  $use_blazy_blurry = \Drupal::config('paraseed_media.settings')->get('use_blazy_blurry');
-  if (isset($use_blazy_blurry) && $use_blazy_blurry === TRUE) {
-
-    if (!empty($variables['attributes']['class'])
-      && !empty($variables['attributes']['uri'])) {
-
-      $uri = $variables['attributes']['uri'];
-      $current_uri_with_style = $uri;
-
-      if (!empty($variables['attributes']['responsive_image_style'])) {
-        $responsive_image_style = ResponsiveImageStyle::load($variables['attributes']['responsive_image_style']);
-        // Create Uri from the fallback image style.
-        $fallback_image_style = $responsive_image_style->getFallbackImageStyle();
-        $current_uri_with_style = ImageStyle::load($fallback_image_style)->buildUri($uri);
-      }
-      elseif (!empty($variables['attributes']['image_style'])) {
-        $current_uri_with_style = ImageStyle::load($variables['attributes']['image_style'])->buildUri($uri);
-      }
-
-      $image_style_blazy_blurry = ImageStyle::load('blazy_blurry');
-
-      $img = $image_style_blazy_blurry->buildUri($current_uri_with_style);
-      $image_style_blazy_blurry->createDerivative($current_uri_with_style, $img);
-
-      if (file_exists($uri) && filesize($uri) > 0
-        && file_exists($img) && filesize($img) > 0) {
-
-        // Encode the image in base64 to speed up loading times.
-        $img_file = fopen($img, "r");
-        $img_binary = fread($img_file, filesize($img));
-        $file_type = mime_content_type($img);
-        $img_base64 = 'data:' . $file_type . ';base64,' . base64_encode($img_binary);
-
-        // Update the placeholder URI.
-        $variables['attributes']['src'] = $img_base64;
-
-        unset($variables['attributes']['responsive_image_style']);
-        unset($variables['attributes']['image_style']);
-        unset($variables['attributes']['uri']);
-
-        fclose($img_file);
-      }
-    }
-  }
-}
+// function paraseed_media_preprocess_image(&$variables) {
+//   var_dump($variables);
+//   // Add the Paraseed Media Blazy Blurry behaviour.
+//   $use_blazy_blurry = \Drupal::config('paraseed_media.settings')->get('use_blazy_blurry');
+//   if (isset($use_blazy_blurry) && $use_blazy_blurry === TRUE) {
+//
+//     if (!empty($variables['attributes']['class'])
+//       && !empty($variables['attributes']['uri'])) {
+//
+//       $uri = $variables['attributes']['uri'];
+//       $current_uri_with_style = $uri;
+//       ksm($current_uri_with_style);
+//       if (!empty($variables['attributes']['responsive_image_style'])) {
+//         $responsive_image_style = ResponsiveImageStyle::load($variables['attributes']['responsive_image_style']);
+//         // Create Uri from the fallback image style.
+//         $fallback_image_style = $responsive_image_style->getFallbackImageStyle();
+//         $current_uri_with_style = ImageStyle::load($fallback_image_style)->buildUri($uri);
+//       }
+//       elseif (!empty($variables['attributes']['image_style'])) {
+//         kint($variables);
+//         $current_uri_with_style = ImageStyle::load($variables['attributes']['image_style'])->buildUri($uri);
+//       }
+//
+//       $image_style_blazy_blurry = ImageStyle::load('blazy_blurry');
+//
+//       $img = $image_style_blazy_blurry->buildUri($current_uri_with_style);
+//       $image_style_blazy_blurry->createDerivative($current_uri_with_style, $img);
+//
+//       if (file_exists($uri) && filesize($uri) > 0
+//         && file_exists($img) && filesize($img) > 0) {
+//
+//         // Encode the image in base64 to speed up loading times.
+//         $img_file = fopen($img, "r");
+//         $img_binary = fread($img_file, filesize($img));
+//         $file_type = mime_content_type($img);
+//         $img_base64 = 'data:' . $file_type . ';base64,' . base64_encode($img_binary);
+//
+//         // Update the placeholder URI.
+//         $variables['attributes']['src'] = $img_base64;
+//
+//         unset($variables['attributes']['responsive_image_style']);
+//         unset($variables['attributes']['image_style']);
+//         unset($variables['attributes']['uri']);
+//
+//         fclose($img_file);
+//       }
+//     }
+//   }
+// }
 
 /**
  * Implements hook_oembed_resource_url_alter().
