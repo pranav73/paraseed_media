@@ -29,4 +29,11 @@ dependencies:
   - views_infinite_scroll
   - token_filter
   - image_resize_filter
+install:
+  - media_library_edit
+  - media_revisions_ui
+  - views_bulk_operations
+  - views_bulk_edit
+  - blazy
+  - slick
 version: 8.x-1.0
