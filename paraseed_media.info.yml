@@ -2,6 +2,7 @@ name: 'Paraseed Media'
 description: 'Manages type of media contents in the site.'
 type: module
 core: 8.x
+package: Paraseed
 dependencies:
   - ace_editor
   - better_exposed_filters
